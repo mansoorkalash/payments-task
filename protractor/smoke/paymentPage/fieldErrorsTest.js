@@ -8,16 +8,20 @@ describe('Verify functionality of Invalid card number', () => {
       'https://payments-ui.cdsshopqa.cdsglobalapps.net/?config_id=0aa1a3fb-5646-48ef-a15e-8eb6e593bdde&prod_id_alias=WS1'
     );
     await cmd.sendKeys(paymentPageLocator.cardNumberInput, '67');
-    const invalidNumber = await cmd.getText(
+    const invalidNumberText = await cmd.getText(
       paymentPageLocator.invalidCardNumberLabel
     );
-    expect(invalidNumber).toEqual('Maestro is not an accepted card.');
-    const colorE = await cmd.get(paymentPageLocator.cardNumberLabel);
-    const color = await colorE.getCssValue('color');
-    expect(color).toBe('rgba(213, 0, 0, 1)');
-    const border = await cmd.get(paymentPageLocator.cardNumberLabel);
-    const borderColor = await border.getCssValue('border-color');
-    expect(borderColor).toBe('rgb(213, 0, 0)');
+    expect(invalidNumberText).toEqual('Maestro is not an accepted card.');
+    const CardNumberLabel = await cmd.get(paymentPageLocator.cardNumberLabel);
+    const colorCardNumberLabel = await CardNumberLabel.getCssValue('color');
+    expect(colorCardNumberLabel).toBe('rgba(213, 0, 0, 1)');
+    const BorderCardNumberInput = await cmd.get(
+      paymentPageLocator.BorderCardNumberInput
+    );
+    const BorderCardNumberInputColor = await BorderCardNumberInput.getCssValue(
+      'border-color'
+    );
+    expect(BorderCardNumberInputColor).toBe('rgb(209, 160, 160)');
   });
 
   it(`Should error appear when the Initial numbers of the not supported card are @C6885 @smoke @paymentUI`, async () => {
@@ -37,7 +41,6 @@ describe('Verify functionality of Invalid card number', () => {
       paymentPageLocator.securityCodeLabelError
     );
     expect(securityCodeErrorText).toEqual('Enter a valid security code');
-
     const securityCodeErrorElement = await cmd.get(
       paymentPageLocator.securityCodeLabelError
     );
@@ -45,7 +48,6 @@ describe('Verify functionality of Invalid card number', () => {
       'color'
     );
     expect(securityCodeErrorColor).toBe('rgba(213, 0, 0, 1)');
-
     const securityCodeContainer = await cmd.get(
       paymentPageLocator.securityCodeContainer
     );
@@ -53,8 +55,5 @@ describe('Verify functionality of Invalid card number', () => {
       'color'
     );
     expect(borderSecurityColor).toBe('rgba(0, 0, 0, 1)');
-    const border = await cmd.get(paymentPageLocator.cardNumberLabel);
-    const borderColor = await border.getCssValue('border-color');
-    expect(borderColor).toBe('rgb(213, 0, 0)');
   });
 });
