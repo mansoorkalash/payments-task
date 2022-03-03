@@ -23,7 +23,7 @@ exports.config = {
   capabilities: {
     browserName: process.env.BROWSER_NAME || 'chrome',
     chromeOptions: {
-      args: ['--window-size=1366,768', '--headless', '--no-sandbox'],
+      args: ['--window-size=1366,768', '--no-sandbox'],
     },
   },
 
