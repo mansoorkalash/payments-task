@@ -1,8 +1,4 @@
 module.exports = {
-  americanCardTooltip: {
-    selector: '#tooltip-card-front',
-    description: 'American card tooltip ',
-  },
   americanExpressIcon: {
     selector: '#amex-icon',
     description: 'American express card icon',
@@ -35,10 +31,6 @@ module.exports = {
     selector: '#cc-number-error-text',
     description: 'Label for invalid card Number',
   },
-  nonAmericanCardTooltip: {
-    selector: '#tooltip-card-back',
-    description: 'Non American card tooltip ',
-  },
   securityCodeContainer: {
     selector: '#security-code-wrapper',
     description: 'Security code container',
@@ -50,9 +42,5 @@ module.exports = {
   securityCodeLabelError: {
     selector: '#security-code-error-text',
     description: 'Security code error label ',
-  },
-  tooltip: {
-    selector: '.dmDiHT',
-    description: 'Tooltip',
   },
 };
